@@ -2,6 +2,7 @@
 
 // Imports dependencies and set up http server
 const
+  functions = require('firebase-functions'),
   express = require('express'),
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json()), // creates express http server
@@ -62,3 +63,5 @@ app.get('/webhook', (req, res) => {
       }
     }
   });
+
+exports.messengerWebhook = functions.https.onRequest(app);
